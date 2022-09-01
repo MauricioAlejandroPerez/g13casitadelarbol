@@ -17,10 +17,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_pscyopg2',
         'NAME': 'g13casitadelarbol',
-        'USER': 'name',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'lcgaqkmlzfcduj',
+        'PASSWORD': '5eb2a54a100fd1dfb4762cd9029f410be3fbde9046259ae2cef01619540d653a',
+        'HOST': 'ec2-44-194-92-192.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
