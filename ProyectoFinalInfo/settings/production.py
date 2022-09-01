@@ -38,5 +38,5 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE='whitenoise.storage.CompressedStaticFilesStorage'
 
 
-STATIC_URL = 'https://django-postgres.herokuapp.com/static/'
-MEDIA_URL = 'https://django-postgres.herokuapp.com/media/' 
+STATIC_URL = 'https://g13casitadelarbol.herokuapp.com/static/'
+MEDIA_URL = 'https://g13casitadelarbol.herokuapp.com/media/' 
