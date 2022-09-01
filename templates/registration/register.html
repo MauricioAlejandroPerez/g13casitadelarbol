@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<H1 class="titular-seccion">REGISTRATE</H1>
+
+<section class="contacto-info">
+    <form method="POST" class="form-signin">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+        <label for="id_email" class="sr-only">E-mail</label>
+        <input type="email" id="id_email" class="form-control" placeholder="E-mail" name="email" required autofocus>
+        <label for="id_username" class="sr-only">Usuario</label>
+        <input type="text" id="id_username" class="form-control" placeholder="Usuario" name="username" required autofocus>
+        <label for="id_password" class="sr-only">Contraseña</label>
+        <input type="password" id="id_password" class="form-control" placeholder="Contraseña" name="password1" required>
+        <label for="id_password" class="sr-only">Contraseña</label>
+        <input type="password" id="id_password_confirmation" class="form-control" placeholder="Contraseña" name="password2" required>
+        <button class="login-button btn btn-lg btn-primary btn-block mb-3" type="submit">Registrarse</button>
+    </form>
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error | escape }}</strong>
+                    </div>
+                {% endfor%}
+            {% endfor %}
+            {% for error in form.non_fields_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error | escape }}</strong>
+                </div>
+            {% endfor %}
+            {% endif %}
+</section>
+{% endblock %}

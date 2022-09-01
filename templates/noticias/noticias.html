@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+        {% if categori %}
+        <H1 class="titular-seccion">NOTICIAS: {{categori.nombre}}</H1>
+        {% else %}
+        <H1 class="titular-seccion">NOTICIAS</H1>
+        {% endif %}
+
+        <div class="">
+            <div class="nav justify-content-center border-bottom">
+                <h6 class="nav-item">Filtros:</h6>
+            {% for categoria  in categorias  %}
+                <ul><a class="nav-item" href="/cat_not/{{categoria.id}}">{{categoria.nombre}}</a></ul>
+            {% endfor %}
+                <ul><a class="nav-item" href="{% url 'noticias' %}">Limpiar filtros</a></ul>
+            </div>
+        </div>
+
+        <div class="main-column row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+            {% for noticia in noticias %}
+            <div class="main columns ">
+                <section class="column">
+                        <a class="article first-article" href="{% url 'noticiadetalle' id=noticia.id %}">
+                            <figure class="article-image is-4by3">
+                                <img src="{{MEDIA_ROOT}}/noticias/{{noticia.img}}" alt="">
+                            </figure>
+                            <div class="article-body">
+                                <h2 class="article-title">{{noticia.titulo}}</h2>
+                                <h6>{% for cat in noticia.categorias.all %} {{cat.nombre}}{% endfor%}</h6>
+                                <p class="article-content">
+                                    {{noticia.contenido | truncatechars:90}}
+                                </p>
+                                <footer class="article-info">
+                                    <span>{{noticia.autor}}</span>
+                                    <span>{{noticia.creado}}</span>
+                                </footer>
+                            </div>
+                        </a>
+            </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}

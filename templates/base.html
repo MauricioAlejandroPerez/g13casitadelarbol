@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static%}
+<html>
+
+<script async="false" type="text/javascript"
+    src="chrome-extension://fnjhmkhhmkbjkkabndcnnogagogbneec/in-page.js"></script>
+
+<head>
+    <title>Fundación La Casita del Arbol</title>
+    <meta charset="utf=8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog de la fundacion 'La casita del arbol'"" />
+    <meta name=" author" content="&copy; Grupo 13 - Comisión 2 - Informatorio 2022">
+    <!--  Fav icon -->
+    <link rel=" apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/5.0/examples/navbars/navbar.css" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
+    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css"> -->
+    <script src="https://kit.fontawesome.com/343ebd4b36.js" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
+            <div class="container-fluid">
+                <div>
+                    <a class="logo" href="{% url 'index' %}" title="Fundación 'La casita del arbol'">
+                        <img src="{% static 'images/BackgroundEraser_20220727_150743449.png' %}" alt="Logo casita">
+                        <h1 class="header-title">La Casita <br> del Arbol</h1>
+                    </a>
+                </div>
+                <!--Logo-->
+                <div>
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!--Menu responsive-->
+                    <div class="navbar-collapse collapse" id="navbarsExample04">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'noticias' %}">Noticias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'eventos' %}">Eventos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'nosotros' %}">Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'contacto' %}">Contacto</a>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <h5 class="nav-link user-welcome">Hola {{ user.username }}!</h5>
+                            </li>
+                            <li class="nav-item">
+                                <button class="login-button">
+                                    <a class="login-text nav-link active" href="{% url 'apps.blog_auth:logout'%}">Cerrar Sesión</a>
+                                </button>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <button class="login-button">
+                                    <a class="login-text nav-link active" href="{% url 'apps.blog_auth:login' %}">Iniciar Sesión</a>
+                                </button>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        {% block contenido %}
+
+        {% endblock %}
+        <div class="icon-bar">
+            <a href="https://www.facebook.com/ernesto.ayala.7967747" class="facebook" title="Facebook"><i class="fa fa-facebook-f"></i></a>
+            <a href="#" class="whatsapp" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+            <a href="#" class="e-mail" title="E-mail"><i class="fa fa-envelopes-bulk"></i></a>
+            <a href="#" class="ubicacion" title="Ubicación"><i class="fa fa-location-dot"></i></a>
+            <a href="{% url 'contacto' %}" class="donation" title="Donar"><i class="fa fa-hand-holding-heart" ></i></a>
+            <!-- <a href="#" class="youtube"><i class="fa fa-youtube"></i></a> -->
+        </div>
+    </main>
+
+    <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <footer class="d-flex align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; Grupo 13 - Comisión 2 - Informatorio 2022 </p>
+        <a href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <img src="{% static 'images/BackgroundEraser_20220727_150743449.png' %}" class="bi me-2" width="40">
+            </img>
+        </a>
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a class="nav-link px-2 text-muted" href="{% url 'noticias' %}">Noticias</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted" href="{% url 'eventos' %}">Eventos</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted" href="{% url 'nosotros' %}">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted" href="{% url 'contacto' %}">Contacto</a></li>
+        </ul>
+    </footer>
+
+
+</body>
+
+</html>

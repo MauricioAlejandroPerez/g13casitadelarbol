@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<section class="contacto-info">
+    <h3>Has cerrado sesion. Hasta Luego</h3>
+    <a href="{% url 'index' %}"><h4>Volver al inicio</h4></a>
+</section>
+<script type="text/javascript">
+    setTimeout( function() { window.location.href = "/"; }, 2500 );
+</script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block contenido %}
+        <H1 class="titular-seccion">{{noticia.titulo}}</H1>
+        <div class="date">{{noticia.autor}} - {{ noticia.creado }}{% for cat in noticia.categorias.all %} - {{cat.nombre}}{% endfor%}</div>
+
+
+        <section class="nosotros-info">
+            <div class="nosotros-text">
+                <div class="detalle-img">
+                    <img src="{{MEDIA_ROOT}}/{{noticia.img}}" alt="">
+                </div>
+                <p>{{ noticia.contenido|safe|linebreaksbr}}</p>
+                <p class="firma">{{noticia.autor}}</p>
+                
+            </div>
+        </section>
+
+        <section class="nosotros-info">
+            <div class="nosotros-text">
+            {% if user.is_authenticated %}
+                <h3>Escribe un comentario</h3>
+                <form method="POST" style="margin-top: 1.3em;">
+                {{ form.as_p }}
+                {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-lg">Enviar comentario</button>
+                </form>
+            {% else %}
+                <div class="">
+                    <p>
+                        <a href="{% url 'apps.blog_auth:login' %}" class="">Inicia sesion para comentar</a>
+                    </p>
+                </div>
+            {% endif %}
+            {% for comentario in noticia.comentarios.all %}
+                {% if comentario.aprobado %}
+                        <hr>
+                        {{ comentario.creado }}
+                        <p>Comentario: {{  comentario.cuerpo_comentario|safe|linebreaks }}</p>
+                        <p class="firma">{{ comentario.autor }}</p>
+                {% endif %}
+                {% empty %}
+                <p>No hay comentarios</p>
+            {% endfor%}
+            <hr>
+            </div>
+        </section>
+{% endblock %}
