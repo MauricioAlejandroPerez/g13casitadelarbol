@@ -38,5 +38,5 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE='whitenoise.storage.CompressedStaticFilesStorage'
 
 
-STATIC_URL = 'https://git.heroku.com/g13casitadelarbol.git/static/'
+STATIC_URL = 'https://g13casitadelarbol.herokuapp.com/static/'
 MEDIA_URL = 'https://g13casitadelarbol.herokuapp.com/media/' 
