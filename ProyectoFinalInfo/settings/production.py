@@ -1,7 +1,6 @@
 from .base import *
 import dj_database_url
 import django_heroku
-import whitenoise
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -38,7 +37,7 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE='whitenoise.storage.CompressedStaticFilesStorage'
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.GzipManifestStaticFilesStorage'
 
 
 STATIC_URL = 'https://django-postgres.herokuapp.com/static/'
