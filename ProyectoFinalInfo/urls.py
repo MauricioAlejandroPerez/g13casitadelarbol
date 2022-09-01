@@ -30,5 +30,5 @@ urlpatterns = [
     url('registration/', include('apps.blog_auth.urls')),
     url('noticias/', include('apps.noticias_app.urls')),
     path('cat_not/<int:id>', views.categoriaNoticia, name='Noticia'),
-    path('cat_eve/<int:id>', views.categoriaEvento, name='Evento'),
+    # path('cat_eve/<int:id>', views.categoriaEvento, name='Evento'),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT,show_indexes=True) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT, show_indexes=True)
