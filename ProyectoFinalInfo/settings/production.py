@@ -37,7 +37,7 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE='whitenoise.storage.CompressedStaticFilesStorage'
-STATICFILES_STORAGE = 'whitenoise.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 STATIC_URL = 'https://django-postgres.herokuapp.com/static/'
