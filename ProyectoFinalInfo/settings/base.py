@@ -52,7 +52,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
-ROOT_URLCONF = 'g13casitadelarbol.urls'
+ROOT_URLCONF = 'ProyectoFinalInfo.urls'
 
 TEMPLATES_DIR = os.path.join(os.path.dirname(BASE_DIR), "templates")
 TEMPLATES_NOTICIAS = os.path.join(os.path.dirname(BASE_DIR), "templates/noticias")
