@@ -1,6 +1,7 @@
 from .base import *
 import dj_database_url
 import django_heroku
+import whitenoise
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
