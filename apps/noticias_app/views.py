@@ -26,7 +26,7 @@ def noticias(request):
         "noticias" : lista_de_noticias,
         "categorias" : lista_de_categorias,
     }
-    return render(request, '/noticias/noticias.html', context)
+    return render(request, 'noticias.html', context)
 
 def eventos(request):
     lista_de_eventos = Evento.objects.all().order_by('creado').reverse()
